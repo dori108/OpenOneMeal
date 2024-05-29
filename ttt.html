@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React App</title>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <!-- React 및 ReactDOM CDN 링크 추가 -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  
+  <!-- React 컴포넌트 코드 추가 -->
+  <script type="module">
+    // 여기에 React 컴포넌트 코드 작성
+    function Square() {
+      return <button>Square</button>;
+    }
+    
+    function Board() {
+      const renderSquare = (i) => {
+        return <Square key={i} />;
+      };
+    
+      const boardSize = 3;
+      const board = [];
+      for (let i = 0; i < boardSize; i++) {
+        const row = [];
+        for (let j = 0; j < boardSize; j++) {
+          row.push(renderSquare(i * boardSize + j));
+        }
+        board.push(<div key={i} className="board-row">{row}</div>);
+      }
+    
+      ReactDOM.render(
+        <div>{board}</div>,
+        document.getElementById('root')
+      );
+    }
+    
+    ReactDOM.render(
+      <Board />,
+      document.getElementById('root')
+    );
+  </script>
+</body>
+</html>
